@@ -1,0 +1,123 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/layout/appPageLayout.xhtml">
+	<ui:define name="pageTitle">
+		Vision Mobile Billing - Purchase Entry
+	</ui:define>
+	<ui:define name="body">
+		
+		<h:form id="purchaseEntryForm">
+			<p:growl id="msgs" />
+			<p:panel header="Create a new Purchase Entry" size="200">
+				<h:panelGrid columns="6" id="purchaseEntryGrid" >
+					<h:outputLabel value="IMEI1 : *" for="mobileImei1"></h:outputLabel>
+					<p:inputText id="mobileImei1" value="#{purchaseEntryBean.mobile.imei1}" required="true" />
+					<h:outputLabel value="IMEI2 : " for="mobileImei2"></h:outputLabel>
+					<p:inputText id="mobileImei2" value="#{purchaseEntryBean.mobile.imei2}" />
+					<h:outputLabel value="Brand : " for="mobileBrand"></h:outputLabel>
+					<p:inputText id="mobileBrand" value="#{purchaseEntryBean.mobile.brand}" required="true"/>
+					
+					<h:outputLabel value="Mob Model : " for="mobileModel"></h:outputLabel>
+					<p:inputText id="mobileModel" value="#{purchaseEntryBean.mobile.modelName}" required="true"/>
+					<h:outputLabel value="Supplier : " for="mobileSupplier"></h:outputLabel>
+					<p:inputText id="mobileSupplier" value="#{purchaseEntryBean.mobile.supplier}" required="true"/>
+					<h:outputLabel value="Mob MRP : " for="mobileMRPPrice"></h:outputLabel>
+					<p:inputText id="mobileMRPPrice" value="#{purchaseEntryBean.mobile.mrpPrice}" required="true"/>
+					
+					<h:outputLabel value="Mob Buy Price : " for="mobileBuyPrice"></h:outputLabel>
+					<p:inputText id="mobileBuyPrice" value="#{purchaseEntryBean.mobile.buyPrice}" required="true"/>
+					<h:outputLabel value="Mob DP : " for="mobileDealerPrice"></h:outputLabel>
+					<p:inputText id="mobileDealerPrice" value="#{purchaseEntryBean.mobile.dealerPrice}" />
+					<h:outputLabel value="Additional Scheme: " for="mobileSchemeAmount"></h:outputLabel>
+					<p:inputText id="mobileSchemeAmount" value="#{purchaseEntryBean.mobile.additionalSchemePrice}" />
+					
+					<h:outputLabel value="Mob BatteryNo : " for="mobileBatteryNo"></h:outputLabel>
+					<p:inputText id="mobileBatteryNo" value="#{purchaseEntryBean.mobile.batteryNo}" />
+					<h:outputLabel value="Mob ChargerNo : " for="mobileChargerNo"></h:outputLabel>
+					<p:inputText id="mobileChargerNo" value="#{purchaseEntryBean.mobile.chargerNo}" />
+					
+					<h:outputLabel value=""/>
+					<h:outputLabel value=""/>
+					<h:outputLabel value=""/>
+					<h:outputLabel value=""/>
+					<!-- 
+					<h:outputLabel value="Purchase Date : " for="mobileBuyDate"></h:outputLabel>
+					<p:inputText id="mobileBuyDate" value="#{purchaseEntryBean.mobile.purchaseDate}" required="true"/>
+ 					-->
+					<br/>
+					<p:commandButton value="Reset" type="reset" />
+					<p:commandButton id="btn_add" value="Add"
+						update="purchaseEntryList msgs @parent"
+						action="#{purchaseEntryBean.reinit}">
+						<p:collector value="#{purchaseEntryBean.mobile}"
+							addTo="#{purchaseEntryBean.mobiles}" />
+					</p:commandButton>
+				</h:panelGrid>
+			</p:panel>
+
+			<p:outputPanel id="purchaseEntryList">
+				<p:dataTable id="mobilesDataTables" value="#{purchaseEntryBean.mobiles}"
+					var="mobile">
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="IMEI1" />
+						</f:facet>
+						<h:outputText value="#{mobile.imei1}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="IMEI2" />
+						</f:facet>
+						<h:outputText value="#{mobile.imei2}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Brand" />
+						</f:facet>
+						<h:outputText value="#{mobile.brand}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Mobile Model" />
+						</f:facet>
+						<h:outputText value="#{mobile.modelName}" />
+					</p:column>
+					
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Mobile MRP" />
+						</f:facet>
+						<h:outputText value="#{mobile.mrpPrice}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Mobile BuyPrice" />
+						</f:facet>
+						<h:outputText value="#{mobile.buyPrice}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Mobile DP" />
+						</f:facet>
+						<h:outputText value="#{mobile.dealerPrice}" />
+					</p:column>
+					
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Operation" />
+						</f:facet>
+						<p:commandLink value="Remove" update=":purchaseEntryForm:purchaseEntryList"
+							process=":purchaseEntryForm:purchaseEntryList">
+							<p:collector value="#{mobile}" removeFrom="#{purchaseEntryBean.mobiles}" />
+						</p:commandLink>
+					</p:column>
+				</p:dataTable>
+			</p:outputPanel>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

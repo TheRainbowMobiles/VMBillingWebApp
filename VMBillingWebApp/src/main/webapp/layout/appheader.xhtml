@@ -1,0 +1,52 @@
+<f:subview xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	<div id="header" class="ui-widget ui-widget-header">
+		<div id="logo">
+			<img src="#{request.contextPath}/static/img/logo0.png" alt="Logo" />
+			<p:clock pattern="dd-MMM-yyyy HH:mm:ss"/> 
+		</div>
+
+		<div id="menu" class="ui-widget">
+			<ul id="main">
+				<li class="current_page_item">
+					<a href="#{request.contextPath}/pages/master/mst_supplier.jsf" style="background: url(''../../static/img/m_master.png') no-repeat center left;">
+					Master
+					</a>
+				</li>
+				<li>
+					<a href="#{request.contextPath}/pages/purchase/pur_entry.jsf" style="background: url('../../static/img/m_supplier.png') no-repeat center left;">
+					Purchase
+					</a>
+				</li>
+				<li>
+					<a href="#{request.contextPath}/pages/sales/sal_entry.jsf" style="background: url('../../static/img/m_sales.png') no-repeat center left;">
+					Sales
+					</a>
+				</li>
+				<li class="current_page_item">
+					<a href="#{request.contextPath}/pages/accs/accshome.jsf" style="background: url('../../static/img/m_acces.png') no-repeat center left;">
+					Accessories
+					</a>
+				</li>
+				<li class="current_page_item">
+					<a href="#{request.contextPath}/pages/accounts/accounts.jsf" style="background: url('../../static/img/m_accounts.png') no-repeat center left;">
+					Accounts
+					</a>
+				</li>
+				<li class="current_page_item">
+					<a href="#{request.contextPath}/pages/reports/reportshome.jsf" style="background: url('../../static/img/m_reports.png') no-repeat center left;">
+					Reports
+					</a>
+				</li>
+				<li class="current_page_item">
+					<a href="#{request.contextPath}/pages/settings/settingshome.jsf" style="background: url('../../static/img/m_settings.png') no-repeat center left;">
+					Settings
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</f:subview>

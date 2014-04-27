@@ -1,0 +1,109 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/layout/appPageLayout.xhtml">
+	<ui:define name="pageTitle">
+		Vision Mobile Billing - Sales Entry
+	</ui:define>
+	<ui:define name="body">
+		<h:form id="salesEntryForm">
+			<p:growl id="growl" sticky="true" showDetail="true" />
+			<p:wizard flowListener="#{salesEntryManagedBean.onFlowProcess}">
+
+				<p:tab id="mobSalesDetails" title="MobileSales">
+
+					<p:panel header="Mobile Sales">
+
+						<h:messages errorClass="error" />
+
+						<h:panelGrid columns="2" columnClasses="label, value"
+							styleClass="grid">
+							<h:outputText value="IMEI1: *" />
+							<p:inputText required="true" label="IMEINumber1"
+								value="#{salesEntryManagedBean.mobile.imei1}" />
+
+							<h:outputText value="IMEI2: *" />
+							<p:inputText required="true" label="IMEINumber2"
+								value="#{salesEntryManagedBean.mobile.imei2}" />
+
+							
+							<h:outputText value="Skip to last: " />
+							<h:selectBooleanCheckbox value="#{salesEntryManagedBean.skip}" />
+						</h:panelGrid>
+					</p:panel>
+				</p:tab>
+
+				<p:tab id="accessoriesSales" title="AccessoriesSales">
+					<p:panel header="Accessories Sales">
+						<h:messages errorClass="error" />
+						<h:panelGrid columns="2" columnClasses="label, value">
+							<h:outputText value="Brand: " />
+							<p:inputText value="#{salesEntryManagedBean.mobile.brand}" />
+
+							<h:outputText value="Model Name: " />
+							<p:inputText value="#{salesEntryManagedBean.mobile.modelName}" />
+
+							<h:outputText value="Skip to last: " />
+							<h:selectBooleanCheckbox value="#{salesEntryManagedBean.skip}" />
+						</h:panelGrid>
+					</p:panel>
+				</p:tab>
+
+				<p:tab id="exchangeMobile" title="Exchange Mobile">
+					<p:panel header="Exchange Mobile Information">
+
+						<h:messages errorClass="error" />
+						<h:panelGrid columns="2" columnClasses="label, value">
+							<h:outputText value="Buy Price: *" />
+							<p:inputText required="true" label="Email"
+								value="#{salesEntryManagedBean.mobile.buyPrice}" />
+
+							<h:outputText value="MRP Price: " />
+							<p:inputText value="#{salesEntryManagedBean.mobile.mrpPrice}" />
+
+							<h:outputText value="DP: " />
+							<p:inputText value="#{salesEntryManagedBean.mobile.dealerPrice}" />
+						</h:panelGrid>
+					</p:panel>
+				</p:tab>
+
+				<p:tab id="confirm" title="Confirmation">
+					<p:panel header="Confirmation">
+
+						<h:panelGrid id="confirmation" columns="6">
+							<h:outputText value="IMEI1: " />
+							<h:outputText styleClass="outputLabel"
+								value="#{salesEntryManagedBean.mobile.imei1}" />
+
+							<h:outputText />
+							<h:outputText />
+						</h:panelGrid>
+						<p:commandButton value="Submit" update="growl"
+							actionListener="#{salesEntryManagedBean.save}" />
+					</p:panel>
+				</p:tab>
+				
+				<p:tab id="billPrint" title="Print Bill">
+					<p:panel header="Print Bill">
+
+						<h:panelGrid id="billPrintPG" columns="6">
+							<h:outputText value="IMEI1: " />
+							<h:outputText styleClass="outputLabel"
+								value="#{salesEntryManagedBean.mobile.imei1}" />
+
+							<h:outputText />
+							<h:outputText />
+						</h:panelGrid>
+						<p:commandButton value="Comple" update="growl"
+							actionListener="#{salesEntryManagedBean.save}" />
+					</p:panel>
+				</p:tab>
+				
+			</p:wizard>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

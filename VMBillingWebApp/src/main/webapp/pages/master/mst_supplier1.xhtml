@@ -1,0 +1,167 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/layout/appPageLayout.xhtml">
+	<ui:define name="pageTitle">
+		Vision Mobile Billing - Master Supplier
+	</ui:define>
+	<ui:define name="body">
+		<h:form id="masterSupplierForm">
+			<p:growl id="growl" showDetail="true" />
+			<p:dashboard id="board"
+				model="#{masterSupplierBean.mstSupplierModel}">
+				<p:ajax event="reorder"
+					listener="#{masterSupplierBean.handleSupplierAction}"
+					update="growl" /> 
+				<p:panel id="newSupplier" header="Add New Supplier">
+					<table>
+						<tr>
+							<td><h:outputLabel for="supplierName" value="Name : " /></td>
+							<td><p:inputText id="supplierName"
+									value="#{masterSupplierBean.supplierName}" required="true">
+									<f:validateLength minimum="5" />
+									<p:ajax event="blur" update="supplierNameMsg" />
+								</p:inputText> <p:message id="supplierNameMsg" for="supplierName"
+									display="icon" /></td>
+						</tr>
+						<tr>
+							<td><h:outputLabel for="supplierAddress" value="Address : " /></td>
+							<td><p:inputText id="supplierAddress"
+									value="#{masterSupplierBean.address}" required="true">
+									<p:ajax event="blur" update="supplierAddressMsg" />
+								</p:inputText> <p:message id="supplierAddressMsg" for="supplierAddress"
+									display="icon" /></td>
+						</tr>
+						<tr>
+							<td><h:outputLabel for="supplierTax" value="Tax : " /></td>
+							<td><p:inputText id="supplierTax"
+									value="#{masterSupplierBean.tax}" required="true">
+									<p:ajax event="blur" update="supplierTaxMsg" />
+								</p:inputText> <p:message id="supplierTaxMsg" for="supplierTax" display="icon" />
+							</td>
+						</tr>
+						<tr>
+							<td><h:outputLabel for="supplierMobileNo"
+									value="MobileNo : " /></td>
+							<td><p:inputText id="supplierMobileNo"
+									value="#{masterSupplierBean.mobileNo}" required="true">
+									<p:ajax event="blur" update="supplierMobileNoMsg" />
+								</p:inputText> <p:message id="supplierMobileNoMsg" for="supplierMobileNo"
+									display="icon" /></td>
+						</tr>
+						<tr>
+							<td><h:outputLabel for="supplierLLNo" value="LandLineNo : " /></td>
+							<td><p:inputText id="supplierLLNo"
+									value="#{masterSupplierBean.landLineNo}">
+									<p:ajax event="blur" update="supplierLLNoMsg" />
+								</p:inputText> <p:message id="supplierLLNoMsg" for="supplierLLNo"
+									display="icon" /></td>
+						</tr>
+						<tr>
+							<td><h:outputLabel for="supplierEmail" value="Email : " /></td>
+							<td><p:inputText id="supplierEmail"
+									value="#{masterSupplierBean.email}">
+									<p:ajax event="blur" update="supplierEmailMsg" />
+								</p:inputText> <p:message id="supplierEmailMsg" for="supplierEmail"
+									display="icon" /></td>
+						</tr>
+						<tr>
+							<td><h:outputLabel for="supplierWebsite" value="website : " /></td>
+							<td><p:inputText id="supplierWebsite"
+									value="#{masterSupplierBean.website}">
+									<p:ajax event="blur" update="supplierWebsiteMsg" />
+								</p:inputText> <p:message id="supplierWebsiteMsg" for="supplierWebsite"
+									display="icon" /></td>
+						</tr>
+						<tr>
+							<td><h:outputLabel for="supplierBrand" value="Brand : " /></td>
+							<td><p:inputText id="supplierBrand"
+									value="#{masterSupplierBean.brand}">
+									<p:ajax event="blur" update="supplierBrandMsg" />
+								</p:inputText> <p:message id="supplierBrandMsg" for="supplierBrand"
+									display="icon" /></td>
+						</tr>
+
+						<tr>
+							<td><p:commandButton id="addUser" value="Add"
+									action="#{masterSupplierBean.addSupplier}" ajax="false" /></td>
+							<td><p:commandButton id="reset" value="Reset"
+									action="#{masterSupplierBean.resetSupplier}" ajax="false" /></td>
+						</tr>
+					</table>
+				</p:panel>
+				
+				<p:panel id="listSupplier" header="Supplier list">
+					<p:dataTable id="supplierDataTable" var="supplier" value="#{masterSupplierBean.suppliers}"
+						paginator="true" rows="10"
+						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						rowsPerPageTemplate="5,10,15">
+						<f:facet name="header">
+			            Ajax Pagination
+			        </f:facet>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="supplierName" />
+							</f:facet>
+							<h:outputText value="#{supplier.supplierName}" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="address" />
+							</f:facet>
+							<h:outputText value="#{supplier.address}" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Tax" />
+							</f:facet>
+							<h:outputText value="#{supplier.tax}" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="MobileNo" />
+							</f:facet>
+							<h:outputText value="#{supplier.mobileNo}" />
+						</p:column>
+						
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="LandLineNo" />
+							</f:facet>
+							<h:outputText value="#{supplier.landLineNo}" />
+						</p:column>
+						
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Email" />
+							</f:facet>
+							<h:outputText value="#{supplier.email}" />
+						</p:column>
+						
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Website" />
+							</f:facet>
+							<h:outputText value="#{supplier.website}" />
+						</p:column>
+						
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Brand" />
+							</f:facet>
+							<h:outputText value="#{supplier.brand}" />
+						</p:column>
+					</p:dataTable>
+				</p:panel>
+			</p:dashboard>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
