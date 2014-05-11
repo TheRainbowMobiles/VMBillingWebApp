@@ -2,6 +2,6 @@
 <html>
 <head></head>
 <body>
-	<jsp:forward page="mst_supplier.jsf" />
+	<jsp:forward page="pages/master/mst_supplier.jsf" />
 </body>
 </html>
