@@ -3,6 +3,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
+	<h:form id="headerForm">
 	<div id="header" class="ui-widget ui-widget-header">
 		<div id="logo">
 			<img src="#{request.contextPath}/static/img/logo0.png" alt="Logo" />
@@ -12,41 +13,28 @@
 		<div id="menu" class="ui-widget">
 			<ul id="main">
 				<li class="current_page_item">
-					<a href="#{request.contextPath}/pages/master/mst_supplier.jsf" style="background: url(''../../static/img/m_master.png') no-repeat center left;">
-					Master
-					</a>
-				</li>
-				<li>
-					<a href="#{request.contextPath}/pages/purchase/pur_entry.jsf" style="background: url('../../static/img/m_supplier.png') no-repeat center left;">
-					Purchase
-					</a>
-				</li>
-				<li>
-					<a href="#{request.contextPath}/pages/sales/sal_entry.jsf" style="background: url('../../static/img/m_sales.png') no-repeat center left;">
-					Sales
-					</a>
+					<h:commandLink id="masterCL" value="Master" action="#{headerBean.goToMasterHome}" style="background: url('../../static/img/m_master.png') no-repeat center left;"/>
 				</li>
 				<li class="current_page_item">
-					<a href="#{request.contextPath}/pages/accs/accshome.jsf" style="background: url('../../static/img/m_acces.png') no-repeat center left;">
-					Accessories
-					</a>
+					<h:commandLink id="purchaseCL" value="Purchase" action="#{headerBean.goToPurchaseHome}" style="background: url('../../static/img/m_supplier.png') no-repeat center left;"/>
 				</li>
 				<li class="current_page_item">
-					<a href="#{request.contextPath}/pages/accounts/accounts.jsf" style="background: url('../../static/img/m_accounts.png') no-repeat center left;">
-					Accounts
-					</a>
+					<h:commandLink id="salesCL" value="Sales" action="#{headerBean.goToSalesHome}" style="background: url('../../static/img/m_sales.png') no-repeat center left;"/>
 				</li>
 				<li class="current_page_item">
-					<a href="#{request.contextPath}/pages/reports/reportshome.jsf" style="background: url('../../static/img/m_reports.png') no-repeat center left;">
-					Reports
-					</a>
+					<h:commandLink id="accessCL" value="Accessories" action="#{headerBean.goToAccessoriesHome}" style="background: url('../../static/img/m_acces.png') no-repeat center left;"/>
 				</li>
 				<li class="current_page_item">
-					<a href="#{request.contextPath}/pages/settings/settingshome.jsf" style="background: url('../../static/img/m_settings.png') no-repeat center left;">
-					Settings
-					</a>
+					<h:commandLink id="accountsCL" value="Accounts" action="#{headerBean.goToAccountsHome}" style="background: url('../../static/img/m_accounts.png') no-repeat center left;"/>
+				</li>
+				<li class="current_page_item">
+					<h:commandLink id="reportsCL" value="Reports" action="#{headerBean.goToReportsHome}" style="background: url('../../static/img/m_reports.png') no-repeat center left;"/>
+				</li>
+				<li class="current_page_item">
+					<h:commandLink id="settingsCL" value="Settings" action="#{headerBean.goToSettingsHome}" style="background: url('../../static/img/m_settings.png') no-repeat center left;"/>
 				</li>
 			</ul>
 		</div>
 	</div>
+	</h:form>
 </f:subview>

@@ -57,4 +57,13 @@ public class MBillingBaseBean {
 	public Object getValueFromSessionMap(String sessMapKey) {
 		return getExternalFacesContext().getSessionMap().get(sessMapKey);
 	}
+	
+	/**
+	 * Store request value to Session Map
+	 * 
+	 * @return
+	 */
+	public void storeValueToSessionMap(String sessMapKey, Object sessMapValue) {
+		getExternalFacesContext().getSessionMap().put(sessMapKey, sessMapValue);
+	}
 }
