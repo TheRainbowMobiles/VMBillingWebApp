@@ -19,7 +19,7 @@ import com.rainbow.billing.mbilling.common.util.MBillingConstants;
  * @author Nanjundan
  * 
  */
-@ManagedBean(name="sidemenuBean")
+@ManagedBean(name="sideMenuBean")
 @ViewScoped
 public class SideMenuNavigationManagedBean extends MBillingBaseBean {
 
@@ -40,13 +40,13 @@ public class SideMenuNavigationManagedBean extends MBillingBaseBean {
 			// Master submenu
 			DefaultSubMenu masterSubmenu = new DefaultSubMenu("Master Submenu");
 			DefaultMenuItem item = new DefaultMenuItem("Company");
-			item.setUrl("http://www.rainbow");
+			item.setUrl("/pages/master/mst_company.jsf");
 			masterSubmenu.addElement(item);
 			item = new DefaultMenuItem("Supplier");
-			item.setUrl("http://www.rainbow");
+			item.setUrl("/pages/master/mst_supplier.jsf");
 			masterSubmenu.addElement(item);
 			item = new DefaultMenuItem("Customer");
-			item.setUrl("http://www.rainbow");
+			item.setUrl("/pages/master/mst_customer.jsf");
 			masterSubmenu.addElement(item);
 			sideMenuNavigationModel.addElement(masterSubmenu);
 

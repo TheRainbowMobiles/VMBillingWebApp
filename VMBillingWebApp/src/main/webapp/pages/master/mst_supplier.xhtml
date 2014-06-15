@@ -10,83 +10,97 @@
 	</ui:define>
 	<ui:define name="body">
 		<h:form id="masterSupplierForm">
-				<p:panel id="newSupplier" header="Add New Supplier">
-					<table>
-						<tr>
-							<td><h:outputLabel for="supplierName" value="Name : " /></td>
-							<td><p:inputText id="supplierName"
-									value="#{masterSupplierBean.supplierName}" required="true">
-									<f:validateLength minimum="5" />
-									<p:ajax event="blur" update="supplierNameMsg" />
-								</p:inputText> <p:message id="supplierNameMsg" for="supplierName"
-									display="icon" /></td>
-						</tr>
-						<tr>
-							<td><h:outputLabel for="supplierAddress" value="Address : " /></td>
-							<td><p:inputText id="supplierAddress"
-									value="#{masterSupplierBean.address}" required="true">
-									<p:ajax event="blur" update="supplierAddressMsg" />
-								</p:inputText> <p:message id="supplierAddressMsg" for="supplierAddress"
-									display="icon" /></td>
-						</tr>
-						<tr>
-							<td><h:outputLabel for="supplierTax" value="Tax : " /></td>
-							<td><p:inputText id="supplierTax"
-									value="#{masterSupplierBean.tax}" required="true">
-									<p:ajax event="blur" update="supplierTaxMsg" />
-								</p:inputText> <p:message id="supplierTaxMsg" for="supplierTax" display="icon" />
-							</td>
-						</tr>
-						<tr>
-							<td><h:outputLabel for="supplierMobileNo"
-									value="MobileNo : " /></td>
-							<td><p:inputText id="supplierMobileNo"
-									value="#{masterSupplierBean.mobileNo}" required="true">
-									<p:ajax event="blur" update="supplierMobileNoMsg" />
-								</p:inputText> <p:message id="supplierMobileNoMsg" for="supplierMobileNo"
-									display="icon" /></td>
-						</tr>
-						<tr>
-							<td><h:outputLabel for="supplierLLNo" value="LandLineNo : " /></td>
-							<td><p:inputText id="supplierLLNo"
-									value="#{masterSupplierBean.landLineNo}">
-									<p:ajax event="blur" update="supplierLLNoMsg" />
-								</p:inputText> <p:message id="supplierLLNoMsg" for="supplierLLNo"
-									display="icon" /></td>
-						</tr>
-						<tr>
-							<td><h:outputLabel for="supplierEmail" value="Email : " /></td>
-							<td><p:inputText id="supplierEmail"
-									value="#{masterSupplierBean.email}">
-									<p:ajax event="blur" update="supplierEmailMsg" />
-								</p:inputText> <p:message id="supplierEmailMsg" for="supplierEmail"
-									display="icon" /></td>
-						</tr>
-						<tr>
-							<td><h:outputLabel for="supplierWebsite" value="website : " /></td>
-							<td><p:inputText id="supplierWebsite"
-									value="#{masterSupplierBean.website}">
-									<p:ajax event="blur" update="supplierWebsiteMsg" />
-								</p:inputText> <p:message id="supplierWebsiteMsg" for="supplierWebsite"
-									display="icon" /></td>
-						</tr>
-						<tr>
-							<td><h:outputLabel for="supplierBrand" value="Brand : " /></td>
-							<td><p:inputText id="supplierBrand"
-									value="#{masterSupplierBean.brand}">
-									<p:ajax event="blur" update="supplierBrandMsg" />
-								</p:inputText> <p:message id="supplierBrandMsg" for="supplierBrand"
-									display="icon" /></td>
-						</tr>
-
-						<tr>
-							<td><p:commandButton id="addUser" value="Add"
-									action="#{masterSupplierBean.addSupplier}" ajax="false" /></td>
-							<td><p:commandButton id="reset" value="Reset"
-									action="#{masterSupplierBean.resetSupplier}" ajax="false" /></td>
-						</tr>
-					</table>
-				</p:panel>
+			<table align="top" width="100%">
+				<tr>
+					<td>
+						<p:panel id="newSupplier" header="Add New Supplier" >
+							<table>
+								<tr>
+									<td>
+										<h:outputLabel for="supplierName" value="Name : " styleClass="b"/>
+									</td>
+									<td>
+										<p:inputText id="supplierName"
+											value="#{masterSupplierBean.supplierName}" required="true">
+											<f:validateLength minimum="5" />
+										</p:inputText>
+									</td>
+									<td><h:outputLabel for="supplierAddress" value="Address : " styleClass="b"/></td>
+									<td><p:inputTextarea id="supplierAddress" size="50"
+											value="#{masterSupplierBean.address}" required="true">
+										</p:inputTextarea> 
+									</td>
+								</tr>
+								<tr>
+									<td><h:outputLabel for="supplierMobileNo" value="MobileNo : " styleClass="b"/></td>
+									<td><p:inputText id="supplierMobileNo"
+											value="#{masterSupplierBean.mobileNo}" required="true">
+											<p:ajax event="blur" update="supplierMobileNoMsg" />
+										</p:inputText> <p:message id="supplierMobileNoMsg" for="supplierMobileNo"
+											display="icon" /></td>
+									<td><h:outputLabel for="supplierLLNo" value="LandLineNo : " styleClass="b"/></td>
+									<td><p:inputText id="supplierLLNo"
+											value="#{masterSupplierBean.landLineNo}">
+											<p:ajax event="blur" update="supplierLLNoMsg" />
+										</p:inputText> <p:message id="supplierLLNoMsg" for="supplierLLNo"
+											display="icon" /></td>
+								</tr>
+								<tr>
+								    <td><h:outputLabel for="supplierEmail" value="Email : " styleClass="b"/></td>
+									<td><p:inputText id="supplierEmail"
+											value="#{masterSupplierBean.email}">
+											<p:ajax event="blur" update="supplierEmailMsg" />
+										</p:inputText> <p:message id="supplierEmailMsg" for="supplierEmail"
+											display="icon" /></td>
+									<td><h:outputLabel for="supplierWebsite" value="website : " styleClass="b"/></td>
+									<td><p:inputText id="supplierWebsite"
+											value="#{masterSupplierBean.website}">
+											<p:ajax event="blur" update="supplierWebsiteMsg" />
+										</p:inputText> <p:message id="supplierWebsiteMsg" for="supplierWebsite"
+											display="icon" /></td>
+								</tr>
+								<tr>
+									<td><h:outputLabel for="supplierBrand" value="Brand : " styleClass="b"/></td>
+									<td><p:inputText id="supplierBrand"
+											value="#{masterSupplierBean.brand}">
+											<p:ajax event="blur" update="supplierBrandMsg" />
+										</p:inputText> <p:message id="supplierBrandMsg" for="supplierBrand"
+											display="icon" /></td>
+									<td><h:outputLabel for="supplierTax" value="Tax : " styleClass="b"/></td>
+									<td><p:inputText id="supplierTax"
+											value="#{masterSupplierBean.tax}" required="true">
+										</p:inputText>
+									</td>
+								</tr>
+								<tr>
+									<td><p:commandButton id="addSupplier" value="Add Supplier"
+											action="#{masterSupplierBean.addSupplier}" ajax="false" /></td>
+									<td><p:commandButton id="resetSupplier" value="Reset"
+											action="#{masterSupplierBean.resetSupplier}" ajax="false" /></td>
+								</tr>
+							</table>
+						</p:panel>
+					</td>
+					<td align="top">
+						<p:panel id="searchSupplier" header="Search Supplier" >
+							<table>
+								<tr>
+									<td><h:outputLabel for="supplierNameSrch" value="Name : " /></td>
+									<td><p:inputText id="supplierNameSrch"
+											value="#{masterSupplierBean.supplierName}" required="true">
+											<f:validateLength minimum="5" />
+											<p:ajax event="blur" update="supplierNameMsgSrch" />
+										</p:inputText> <p:message id="supplierNameMsgSrch" for="supplierName"
+											display="icon" /></td>
+									<td><p:commandButton id="searchSupplierBtn" value="Search"
+											actionListener="#{masterSupplierBean.searchSupplier}" ajax="true" /></td>
+								</tr>
+							</table>
+						</p:panel>
+					</td>
+				</tr>
+			</table> 
+				
 				
 				<p:panel id="listSupplier" header="Supplier list">
 					<p:dataTable id="supplierDataTable" var="supplier" value="#{masterSupplierBean.suppliers}"

@@ -9,6 +9,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 
 import org.primefaces.event.DashboardReorderEvent;
 import org.primefaces.model.DashboardColumn;
@@ -82,6 +83,17 @@ public class MasterSupplierManagedBean {
 		return null;
 	}
 
+	/**
+	 * Method to search the supplier details provide in UI
+	 * 
+	 * @return
+	 */
+	public void searchSupplier(ActionEvent actionEvent) {
+		System.out.println("searchSupplier successfully!");
+		return;
+	}
+
+	
 	/**
 	 * Adding faces message to UI
 	 * 
