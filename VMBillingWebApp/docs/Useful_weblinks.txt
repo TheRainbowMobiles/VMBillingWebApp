@@ -1,0 +1,2 @@
+How to generate Hibernate domain and mapping files from DB Tables
+http://www.wikihow.com/Generate-Hibernate-Pojo-Classes-from-DB-Tables
