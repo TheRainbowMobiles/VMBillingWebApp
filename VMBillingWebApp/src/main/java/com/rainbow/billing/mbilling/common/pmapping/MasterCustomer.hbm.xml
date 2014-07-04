@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 4, 2014 8:21:11 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="MasterCustomer" table="master_customer" catalog="mob_store_billing">
+        <id name="masterCustomerid" type="java.lang.Integer">
+            <column name="MASTER_CUSTOMERID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="masterCustType" class="MasterCustType" fetch="select">
+            <column name="MASTER_CUSTOMERTYPE" />
+        </many-to-one>
+        <many-to-one name="masterCustRemdton" class="MasterCustRemdton" fetch="select">
+            <column name="MASTER_CUSTOMERRECOMMANDATION" not-null="true" />
+        </many-to-one>
+        <property name="masterCustomername" type="string">
+            <column name="MASTER_CUSTOMERNAME" length="50" not-null="true" />
+        </property>
+        <property name="masterCustomermob" type="string">
+            <column name="MASTER_CUSTOMERMOB" length="15" not-null="true" />
+        </property>
+        <property name="masterCustomeremail" type="string">
+            <column name="MASTER_CUSTOMEREMAIL" length="45" />
+        </property>
+        <property name="masterCustomeraddress" type="string">
+            <column name="MASTER_CUSTOMERADDRESS" length="150" />
+        </property>
+        <property name="masterCustomerAddfldChr" type="string">
+            <column name="MASTER_CUSTOMER_ADDFLD_CHR" length="50" />
+        </property>
+        <property name="masterCustomerAddfldChr2" type="string">
+            <column name="MASTER_CUSTOMER_ADDFLD_CHR2" length="50" />
+        </property>
+        <set name="billpaymentCustomers" table="billpayment_customer" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CUSTOMER_ID" not-null="true" />
+            </key>
+            <one-to-many class="BillpaymentCustomer" />
+        </set>
+    </class>
+</hibernate-mapping>

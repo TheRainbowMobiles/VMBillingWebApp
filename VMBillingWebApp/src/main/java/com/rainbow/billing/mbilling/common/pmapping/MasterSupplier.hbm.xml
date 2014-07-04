@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 4, 2014 8:21:11 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="MasterSupplier" table="master_supplier" catalog="mob_store_billing">
+        <id name="masterSupplierId" type="java.lang.Integer">
+            <column name="MASTER_SUPPLIER_ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="masterGenStatus" class="MasterGenStatus" fetch="select">
+            <column name="MASTER_SUPPLIER_STATUS" not-null="true" />
+        </many-to-one>
+        <many-to-one name="masterMobBrand" class="MasterMobBrand" fetch="select">
+            <column name="MASTER_SUPPLIER_BRAND" not-null="true" />
+        </many-to-one>
+        <property name="masterSupplierName" type="string">
+            <column name="MASTER_SUPPLIER_NAME" length="50" not-null="true" />
+        </property>
+        <property name="masterSupplierAddress" type="string">
+            <column name="MASTER_SUPPLIER_ADDRESS" length="100" not-null="true" />
+        </property>
+        <property name="masterSupplierTax" type="string">
+            <column name="MASTER_SUPPLIER_TAX" length="50" not-null="true" />
+        </property>
+        <property name="masterSupplierPhmob" type="string">
+            <column name="MASTER_SUPPLIER_PHMOB" length="15" not-null="true" />
+        </property>
+        <property name="masterSupplierPhll" type="string">
+            <column name="MASTER_SUPPLIER_PHLL" length="15" not-null="true" />
+        </property>
+        <property name="masterSupplierEmail" type="string">
+            <column name="MASTER_SUPPLIER_EMAIL" length="45" not-null="true" />
+        </property>
+        <property name="masterSupplierWebsite" type="string">
+            <column name="MASTER_SUPPLIER_WEBSITE" length="50" />
+        </property>
+        <property name="masterSupplierFeedback" type="string">
+            <column name="MASTER_SUPPLIER_FEEDBACK" length="200" />
+        </property>
+        <property name="masterSupplierAddfldChar1" type="string">
+            <column name="MASTER_SUPPLIER_ADDFLD_CHAR1" length="50" />
+        </property>
+        <property name="masterSupplierAddfldChar2" type="string">
+            <column name="MASTER_SUPPLIER_ADDFLD_CHAR2" length="50" />
+        </property>
+        <property name="masterSupplierAddfldChar3" type="string">
+            <column name="MASTER_SUPPLIER_ADDFLD_CHAR3" length="30" />
+        </property>
+        <set name="prodMobs" table="prod_mob" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PROD_MOB_SUPPLIER" not-null="true" />
+            </key>
+            <one-to-many class="ProdMob" />
+        </set>
+        <set name="billpaymentSuppliers" table="billpayment_supplier" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="SUPPLIER" not-null="true" />
+            </key>
+            <one-to-many class="BillpaymentSupplier" />
+        </set>
+    </class>
+</hibernate-mapping>

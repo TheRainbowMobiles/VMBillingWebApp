@@ -85,7 +85,7 @@
 						<p:panel id="searchSupplier" header="Search Supplier" >
 							<table>
 								<tr>
-									<td><h:outputLabel for="supplierNameSrch" value="Name : " /></td>
+									<td><h:outputLabel for="supplierNameSrch" value="Supplier Name : " /></td>
 									<td><p:inputText id="supplierNameSrch"
 											value="#{masterSupplierBean.supplierName}" required="true">
 											<f:validateLength minimum="5" />
@@ -107,10 +107,6 @@
 						paginator="true" rows="10"
 						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 						rowsPerPageTemplate="5,10,15">
-						<f:facet name="header">
-			            Ajax Pagination
-			        </f:facet>
-
 						<p:column>
 							<f:facet name="header">
 								<h:outputText value="supplierName" />

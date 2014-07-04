@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+  <table-filter match-catalog="mob_store_billing" match-name="master_gen_status"/>
+  <table-filter match-catalog="mob_store_billing" match-name="master_company"/>
+  <table-filter match-catalog="mob_store_billing" match-name="master_compbranch_ctgry"/>
+  <table-filter match-catalog="mob_store_billing" match-name="master_comp_branch"/>
+  <table-filter match-catalog="mob_store_billing" match-name="master_mob_brand"/>
+  <table-filter match-catalog="mob_store_billing" match-name="master_supplier"/>
+  <table-filter match-catalog="mob_store_billing" match-name="master_prod_category"/>
+  <table-filter match-catalog="mob_store_billing" match-name="master_prod_status"/>
+  <table-filter match-catalog="mob_store_billing" match-name="master_cust_type"/>
+  <table-filter match-catalog="mob_store_billing" match-name="master_cust_remdton"/>
+  <table-filter match-catalog="mob_store_billing" match-name="master_customer"/>
+  <table-filter match-catalog="mob_store_billing" match-name="master_usr_secqns"/>
+  <table-filter match-catalog="mob_store_billing" match-name="master_user_ctgry"/>
+  <table-filter match-catalog="mob_store_billing" match-name="user"/>
+  <table-filter match-catalog="mob_store_billing" match-name="master_role"/>
+  <table-filter match-catalog="mob_store_billing" match-name="user_role"/>
+  <table-filter match-catalog="mob_store_billing" match-name="prod_mob"/>     
+  <table-filter match-catalog="mob_store_billing" match-name="prod_mob_addinfo"/>
+  <table-filter match-catalog="mob_store_billing" match-name="prod_others"/>
+  <table-filter match-catalog="mob_store_billing" match-name="prod_tx_activity"/>
+  <table-filter match-catalog="mob_store_billing" match-name="billpayment_customer"/>
+  <table-filter match-catalog="mob_store_billing" match-name="billpayment_supplier"/>
+  <table-filter match-catalog="mob_store_billing" match-name="expense"/>
+</hibernate-reverse-engineering>

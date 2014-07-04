@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 4, 2014 8:21:11 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="MasterProdStatus" table="master_prod_status" catalog="mob_store_billing">
+        <id name="masterProdStatusId" type="java.lang.Integer">
+            <column name="MASTER_PROD_STATUS_ID" />
+            <generator class="identity" />
+        </id>
+        <property name="masterProdStatusDesc" type="string">
+            <column name="MASTER_PROD_STATUS_DESC" length="100" not-null="true" />
+        </property>
+        <property name="masterProdStatusAddfldChr1" type="string">
+            <column name="MASTER_PROD_STATUS_ADDFLD_CHR1" length="50" />
+        </property>
+        <property name="masterProdStatusAddfldChr2" type="string">
+            <column name="MASTER_PROD_STATUS_ADDFLD_CHR2" length="50" />
+        </property>
+        <set name="prodMobs" table="prod_mob" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PROD_MOB_STATUS" not-null="true" />
+            </key>
+            <one-to-many class="ProdMob" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 4, 2014 8:21:11 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="BillpaymentSupplier" table="billpayment_supplier" catalog="mob_store_billing">
+        <id name="supplierBillpaymentId" type="java.lang.Integer">
+            <column name="SUPPLIER_BILLPAYMENT_ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="masterSupplier" class="MasterSupplier" fetch="select">
+            <column name="SUPPLIER" not-null="true" />
+        </many-to-one>
+        <property name="supplierBillno" type="java.lang.Integer">
+            <column name="SUPPLIER_BILLNO" />
+        </property>
+        <property name="supplierBilldt" type="date">
+            <column name="SUPPLIER_BILLDT" length="10" />
+        </property>
+        <property name="supplierBillpaymentAmt" type="big_decimal">
+            <column name="SUPPLIER_BILLPAYMENT_AMT" precision="7" />
+        </property>
+        <property name="supplierOrgpaymentAmt" type="big_decimal">
+            <column name="SUPPLIER_ORGPAYMENT_AMT" precision="7" />
+        </property>
+        <property name="supplierOrgpaymentdt" type="date">
+            <column name="SUPPLIER_ORGPAYMENTDT" length="10" />
+        </property>
+        <property name="supplierOrgpaymentRef" type="string">
+            <column name="SUPPLIER_ORGPAYMENT_REF" length="200" />
+        </property>
+        <property name="supplierBillComments" type="string">
+            <column name="SUPPLIER_BILL_COMMENTS" length="500" />
+        </property>
+        <property name="supplierBillImg" type="binary">
+            <column name="SUPPLIER_BILL_IMG" />
+        </property>
+    </class>
+</hibernate-mapping>

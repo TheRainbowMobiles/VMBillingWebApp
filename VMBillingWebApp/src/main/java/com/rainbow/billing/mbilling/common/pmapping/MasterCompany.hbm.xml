@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 4, 2014 8:21:11 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="MasterCompany" table="master_company" catalog="mob_store_billing">
+        <id name="companyId" type="java.lang.Integer">
+            <column name="COMPANY_ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="masterGenStatus" class="MasterGenStatus" fetch="select">
+            <column name="COMPANY_STATUS" not-null="true" />
+        </many-to-one>
+        <property name="companyName" type="string">
+            <column name="COMPANY_NAME" length="100" not-null="true" />
+        </property>
+        <property name="companyTin" type="string">
+            <column name="COMPANY_TIN" length="45" not-null="true" />
+        </property>
+        <property name="companyAddress" type="string">
+            <column name="COMPANY_ADDRESS" length="200" not-null="true" />
+        </property>
+        <property name="comapnyLickey" type="string">
+            <column name="COMAPNY_LICKEY" length="70" not-null="true" />
+        </property>
+        <property name="companyAddfldNbr1" type="java.lang.Integer">
+            <column name="COMPANY_ADDFLD_NBR1" />
+        </property>
+        <property name="companyAddfldNbr2" type="java.lang.Integer">
+            <column name="COMPANY_ADDFLD_NBR2" />
+        </property>
+        <property name="companyAddfldChar1" type="string">
+            <column name="COMPANY_ADDFLD_CHAR1" length="30" />
+        </property>
+        <property name="companyAddfldChar2" type="string">
+            <column name="COMPANY_ADDFLD_CHAR2" length="40" />
+        </property>
+        <property name="companyAddfldChar3" type="string">
+            <column name="COMPANY_ADDFLD_CHAR3" length="50" />
+        </property>
+        <set name="masterCompBranchs" table="master_comp_branch" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="MASTER_COMP_BRANCH_COMPANY_ID" not-null="true" />
+            </key>
+            <one-to-many class="MasterCompBranch" />
+        </set>
+    </class>
+</hibernate-mapping>

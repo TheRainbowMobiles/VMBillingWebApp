@@ -1,2 +1,4 @@
 How to generate Hibernate domain and mapping files from DB Tables
 http://www.wikihow.com/Generate-Hibernate-Pojo-Classes-from-DB-Tables
+http://www.javacodegeeks.com/2013/10/step-by-step-auto-code-generation-for-pojo-domain-java-classes-and-hbm-using-eclipse-hibernate-plugin.html
+http://javafws.blogspot.co.uk/2013/04/generate-hbm-files-pojo-classes-in-eclipse.html 

@@ -13,7 +13,7 @@
 	<bean id="masterSupplierManagedBean" class="com.rainbow.billing.mbilling.web.mbean.master.MasterSupplierManagedBean" />
 	
 	<!-- Data Source Declaration -->
-	<bean id="DataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		destroy-method="close">
 		<property name="driverClass" value="com.mysql.jdbc.Driver" />
 		<property name="jdbcUrl"
@@ -28,7 +28,7 @@
 	<!-- Session Factory Declaration -->
 	<bean id="SessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-		<property name="dataSource" ref="DataSource" />
+		<property name="dataSource" ref="dataSource" />
 		<property name="annotatedClasses">
 			<list>
 				<value>com.rainbow.billing.mbilling.common.domain.MobileBrand</value>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 4, 2014 8:21:11 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="MasterCustType" table="master_cust_type" catalog="mob_store_billing">
+        <id name="masterCustTypeId" type="java.lang.Integer">
+            <column name="MASTER_CUST_TYPE_ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="masterGenStatus" class="MasterGenStatus" fetch="select">
+            <column name="MASTER_CUST_TYPE_STATUS" not-null="true" />
+        </many-to-one>
+        <property name="masterCustTypeDesc" type="string">
+            <column name="MASTER_CUST_TYPE_DESC" length="50" not-null="true" />
+        </property>
+        <set name="masterCustomers" table="master_customer" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="MASTER_CUSTOMERTYPE" />
+            </key>
+            <one-to-many class="MasterCustomer" />
+        </set>
+    </class>
+</hibernate-mapping>

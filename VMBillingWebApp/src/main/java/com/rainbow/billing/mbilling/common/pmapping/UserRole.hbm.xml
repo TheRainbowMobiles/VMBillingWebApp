@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 4, 2014 8:21:11 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="UserRole" table="user_role" catalog="mob_store_billing">
+        <composite-id name="id" class="UserRoleId">
+            <key-property name="userid" type="int">
+                <column name="USERID" />
+            </key-property>
+            <key-property name="roleid" type="int">
+                <column name="ROLEID" />
+            </key-property>
+            <key-property name="branchid" type="int">
+                <column name="BRANCHID" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="masterRole" class="MasterRole" update="false" insert="false" fetch="select">
+            <column name="ROLEID" not-null="true" />
+        </many-to-one>
+        <many-to-one name="user" class="User" update="false" insert="false" fetch="select">
+            <column name="USERID" not-null="true" />
+        </many-to-one>
+        <many-to-one name="masterCompBranch" class="MasterCompBranch" update="false" insert="false" fetch="select">
+            <column name="BRANCHID" not-null="true" />
+        </many-to-one>
+        <property name="userRoleAccessSettings" type="string">
+            <column name="USER_ROLE_ACCESS_SETTINGS" length="4000" />
+        </property>
+        <property name="userRoleAddfldChr1" type="string">
+            <column name="USER_ROLE_ADDFLD_CHR1" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

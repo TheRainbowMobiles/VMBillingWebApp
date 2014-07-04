@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 4, 2014 8:21:11 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="MasterProdCategory" table="master_prod_category" catalog="mob_store_billing">
+        <id name="masterProdCategoryId" type="java.lang.Integer">
+            <column name="MASTER_PROD_CATEGORY_ID" />
+            <generator class="identity" />
+        </id>
+        <property name="masterProdCategoryDesc" type="string">
+            <column name="MASTER_PROD_CATEGORY_DESC" length="100" not-null="true" />
+        </property>
+        <property name="masterProdCategoryAddfldChr1" type="string">
+            <column name="MASTER_PROD_CATEGORY_ADDFLD_CHR1" length="50" />
+        </property>
+        <property name="masterProdCategoryAddfldChr2" type="string">
+            <column name="MASTER_PROD_CATEGORY_ADDFLD_CHR2" length="50" />
+        </property>
+        <set name="prodOtherses" table="prod_others" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PROD_CATEGORY" not-null="true" />
+            </key>
+            <one-to-many class="ProdOthers" />
+        </set>
+    </class>
+</hibernate-mapping>

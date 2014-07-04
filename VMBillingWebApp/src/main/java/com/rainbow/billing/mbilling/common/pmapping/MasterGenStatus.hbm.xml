@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 4, 2014 8:21:11 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="MasterGenStatus" table="master_gen_status" catalog="mob_store_billing">
+        <id name="genStatusId" type="int">
+            <column name="GEN_STATUS_ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="masterGenStatusDesc" type="string">
+            <column name="MASTER_GEN_STATUS_DESC" length="50" not-null="true" />
+        </property>
+        <property name="masterGenStatusComments" type="string">
+            <column name="MASTER_GEN_STATUS_COMMENTS" length="50" />
+        </property>
+        <set name="masterSuppliers" table="master_supplier" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="MASTER_SUPPLIER_STATUS" not-null="true" />
+            </key>
+            <one-to-many class="MasterSupplier" />
+        </set>
+        <set name="masterMobBrands" table="master_mob_brand" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="MASTER_MOB_BRAND_STATUS" not-null="true" />
+            </key>
+            <one-to-many class="MasterMobBrand" />
+        </set>
+        <set name="masterCompBranchs" table="master_comp_branch" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="MASTER_COMP_BRANCH_STATUS" />
+            </key>
+            <one-to-many class="MasterCompBranch" />
+        </set>
+        <set name="users" table="user" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="USER_STATUS" not-null="true" />
+            </key>
+            <one-to-many class="User" />
+        </set>
+        <set name="masterCustTypes" table="master_cust_type" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="MASTER_CUST_TYPE_STATUS" not-null="true" />
+            </key>
+            <one-to-many class="MasterCustType" />
+        </set>
+        <set name="masterCustRemdtons" table="master_cust_remdton" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="MASTER_CUST_RCMD_STATUS" not-null="true" />
+            </key>
+            <one-to-many class="MasterCustRemdton" />
+        </set>
+        <set name="masterRoles" table="master_role" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="MASTER_USER_ROLE_STATUS" not-null="true" />
+            </key>
+            <one-to-many class="MasterRole" />
+        </set>
+        <set name="masterCompanies" table="master_company" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="COMPANY_STATUS" not-null="true" />
+            </key>
+            <one-to-many class="MasterCompany" />
+        </set>
+    </class>
+</hibernate-mapping>

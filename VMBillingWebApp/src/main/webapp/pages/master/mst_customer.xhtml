@@ -1,0 +1,116 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/layout/appPageLayout.xhtml">
+	<ui:define name="pageTitle">
+		Vision Mobile Billing - Master Customer
+	</ui:define>
+	<ui:define name="body">
+		<h:form id="masterCustomerForm">
+			<table align="top" width="100%">
+				<tr>
+					<td>
+						<p:panel id="newCustomer" header="Add New Customer" >
+							<table>
+								<tr>
+									<td>
+										<h:outputLabel for="customerName" value="Name : " styleClass="b"/>
+									</td>
+									<td>
+										<p:inputText id="customerName"
+											value="#{masterCustomerBean.custName}" required="true">
+											<f:validateLength minimum="5" />
+										</p:inputText>
+									</td>
+									<td><h:outputLabel for="customerAddress" value="Address : " styleClass="b"/></td>
+									<td><p:inputTextarea id="customerAddress" size="50"
+											value="#{masterCustomerBean.custAddress}" required="true">
+										</p:inputTextarea> 
+									</td>
+								</tr>
+								<tr>
+									<td><h:outputLabel for="customerMobileNo" value="MobileNo : " styleClass="b"/></td>
+									<td><p:inputText id="customerMobileNo"
+											value="#{masterCustomerBean.custMobileNo}" required="true">
+											<p:ajax event="blur" update="customerMobileNoMsg" />
+										</p:inputText> <p:message id="customerMobileNoMsg" for="customerMobileNo"
+											display="icon" /></td>
+									<td><h:outputLabel for="customerEmail" value="custEmail : " styleClass="b"/></td>
+									<td><p:inputText id="customerEmail"
+											value="#{masterCustomerBean.custEmail}">
+											<p:ajax event="blur" update="custEmailMsg" />
+										</p:inputText> <p:message id="custEmailMsg" for="customerMobileNo"
+											display="icon" /></td>
+								</tr>
+									</table>
+						</p:panel>
+					</td>
+					<td align="top">
+						<p:panel id="searchcustomer" header="Search customer" >
+							<table>
+								<tr>
+									<td><h:outputLabel for="customerMobNoSrch" value="Customer Mob No : " /></td>
+									<td><p:inputText id="customerMobNoSrch"
+											value="#{masterCustomerBean.custMobileNo}" required="true">
+											<f:validateLength minimum="5" />
+											<p:ajax event="blur" update="customerMobNoSrch" />
+										</p:inputText> <p:message id="customerMobNoMsbSrch" for="customerMobNoSrch"
+											display="icon" /></td>
+									<td><p:commandButton id="searchcustomerBtn" value="Search"
+											actionListener="#{masterCustomerBean.searchcustomer}" ajax="true" /></td>
+								</tr>
+							</table>
+						</p:panel>
+					</td>
+				</tr>
+			</table> 
+				
+				
+			<p:panel id="listcustomer" header="customer list">
+				<p:dataTable id="customerDataTable" var="customer" value="#{masterCustomerBean.customers}"
+					paginator="true" rows="10"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15">
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="customerName" />
+						</f:facet>
+						<h:outputText value="#{customer.customerName}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="address" />
+						</f:facet>
+						<h:outputText value="#{customer.address}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Tax" />
+						</f:facet>
+						<h:outputText value="#{customer.tax}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="MobileNo" />
+						</f:facet>
+						<h:outputText value="#{customer.mobileNo}" />
+					</p:column>
+					
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Email" />
+						</f:facet>
+						<h:outputText value="#{customer.email}" />
+					</p:column>
+				</p:dataTable>
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

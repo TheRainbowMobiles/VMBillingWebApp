@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 4, 2014 8:21:11 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="BillpaymentCustomer" table="billpayment_customer" catalog="mob_store_billing">
+        <id name="customerBillpaymentId" type="java.lang.Integer">
+            <column name="CUSTOMER_BILLPAYMENT_ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="masterCustomer" class="MasterCustomer" fetch="select">
+            <column name="CUSTOMER_ID" not-null="true" />
+        </many-to-one>
+        <many-to-one name="prodMob" class="ProdMob" fetch="select">
+            <column name="CUSTOMER_PROD_ID" />
+        </many-to-one>
+        <property name="customerBillno" type="int">
+            <column name="CUSTOMER_BILLNO" not-null="true" unique="true" />
+        </property>
+        <property name="customerBillamount" type="big_decimal">
+            <column name="CUSTOMER_BILLAMOUNT" precision="5" not-null="true" />
+        </property>
+        <property name="customerBilldt" type="timestamp">
+            <column name="CUSTOMER_BILLDT" length="19" not-null="true" />
+        </property>
+        <property name="customerBillpaymentref" type="string">
+            <column name="CUSTOMER_BILLPAYMENTREF" length="500" />
+        </property>
+        <property name="customerPaidamount" type="big_decimal">
+            <column name="CUSTOMER_PAIDAMOUNT" precision="5" />
+        </property>
+        <property name="customerPaiddt" type="timestamp">
+            <column name="CUSTOMER_PAIDDT" length="19" />
+        </property>
+        <property name="customerCreditamount" type="big_decimal">
+            <column name="CUSTOMER_CREDITAMOUNT" precision="5" />
+        </property>
+        <property name="customerCreditrcddate" type="timestamp">
+            <column name="CUSTOMER_CREDITRCDDATE" length="19" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 4, 2014 8:21:11 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="ProdTxActivity" table="prod_tx_activity" catalog="mob_store_billing">
+        <id name="prodTxActivityId" type="java.lang.Integer">
+            <column name="PROD_TX_ACTIVITY_ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="user" class="User" fetch="select">
+            <column name="PROD_TX_ACTIONEDBY" not-null="true" />
+        </many-to-one>
+        <many-to-one name="prodMob" class="ProdMob" fetch="select">
+            <column name="PROD_TX_PRODID" not-null="true" />
+        </many-to-one>
+        <property name="prodTxActioneddt" type="timestamp">
+            <column name="PROD_TX_ACTIONEDDT" length="19" not-null="true" />
+        </property>
+        <property name="prodTxActivityComments" type="string">
+            <column name="PROD_TX_ACTIVITY_COMMENTS" length="250" />
+        </property>
+    </class>
+</hibernate-mapping>

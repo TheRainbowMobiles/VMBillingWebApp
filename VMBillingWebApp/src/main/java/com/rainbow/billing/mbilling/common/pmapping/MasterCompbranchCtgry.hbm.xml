@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 4, 2014 8:21:11 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="MasterCompbranchCtgry" table="master_compbranch_ctgry" catalog="mob_store_billing">
+        <id name="masterCompbranchCtgryId" type="java.lang.Integer">
+            <column name="MASTER_COMPBRANCH_CTGRY_ID" />
+            <generator class="identity" />
+        </id>
+        <property name="masterCompbranchCtgrDesc" type="string">
+            <column name="MASTER_COMPBRANCH_CTGR_DESC" length="50" not-null="true" />
+        </property>
+        <property name="masterCompbranchCtgryAddfldChr1" type="string">
+            <column name="MASTER_COMPBRANCH_CTGRY_ADDFLD_CHR1" length="50" />
+        </property>
+        <set name="masterCompBranchs" table="master_comp_branch" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="MASTER_COMP_BRANCHCATGY" not-null="true" />
+            </key>
+            <one-to-many class="MasterCompBranch" />
+        </set>
+    </class>
+</hibernate-mapping>

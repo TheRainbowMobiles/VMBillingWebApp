@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 4, 2014 8:21:11 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="MasterUserCtgry" table="master_user_ctgry" catalog="mob_store_billing">
+        <id name="masterUserTypeId" type="int">
+            <column name="MASTER_USER_TYPE_ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="masterUserTypeDesc" type="string">
+            <column name="MASTER_USER_TYPE_DESC" length="100" not-null="true" />
+        </property>
+        <set name="users" table="user" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="USER_CATEGORY" not-null="true" />
+            </key>
+            <one-to-many class="User" />
+        </set>
+    </class>
+</hibernate-mapping>

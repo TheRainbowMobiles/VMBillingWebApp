@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 4, 2014 8:21:11 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="Expense" table="expense" catalog="mob_store_billing">
+        <id name="expenseId" type="java.lang.Integer">
+            <column name="EXPENSE_ID" />
+            <generator class="identity" />
+        </id>
+        <property name="expTowhompaid" type="string">
+            <column name="EXP_TOWHOMPAID" length="50" not-null="true" />
+        </property>
+        <property name="expPurpose" type="string">
+            <column name="EXP_PURPOSE" length="100" not-null="true" />
+        </property>
+        <property name="expAmount" type="big_decimal">
+            <column name="EXP_AMOUNT" precision="5" not-null="true" />
+        </property>
+        <property name="expPaiddt" type="timestamp">
+            <column name="EXP_PAIDDT" length="19" not-null="true" />
+        </property>
+        <property name="expComments" type="string">
+            <column name="EXP_COMMENTS" length="200" />
+        </property>
+    </class>
+</hibernate-mapping>

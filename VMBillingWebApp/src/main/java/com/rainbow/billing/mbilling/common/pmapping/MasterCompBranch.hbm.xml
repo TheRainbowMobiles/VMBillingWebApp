@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 4, 2014 8:21:11 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="MasterCompBranch" table="master_comp_branch" catalog="mob_store_billing">
+        <id name="masterCompBranchId" type="java.lang.Integer">
+            <column name="MASTER_COMP_BRANCH_ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="masterGenStatus" class="MasterGenStatus" fetch="select">
+            <column name="MASTER_COMP_BRANCH_STATUS" />
+        </many-to-one>
+        <many-to-one name="masterCompany" class="MasterCompany" fetch="select">
+            <column name="MASTER_COMP_BRANCH_COMPANY_ID" not-null="true" />
+        </many-to-one>
+        <many-to-one name="masterCompbranchCtgry" class="MasterCompbranchCtgry" fetch="select">
+            <column name="MASTER_COMP_BRANCHCATGY" not-null="true" />
+        </many-to-one>
+        <property name="masterCompBranchCode" type="string">
+            <column name="MASTER_COMP_BRANCH_CODE" length="10" not-null="true" />
+        </property>
+        <property name="masterCompBranchName" type="string">
+            <column name="MASTER_COMP_BRANCH_NAME" length="45" not-null="true" />
+        </property>
+        <property name="masterCompBranchAddress" type="string">
+            <column name="MASTER_COMP_BRANCH_ADDRESS" length="150" not-null="true" />
+        </property>
+        <property name="masterCompBranchPerformace" type="int">
+            <column name="MASTER_COMP_BRANCH_PERFORMACE" not-null="true" />
+        </property>
+        <property name="masterCompBranchStartdt" type="date">
+            <column name="MASTER_COMP_BRANCH_STARTDT" length="10" not-null="true" />
+        </property>
+        <property name="masterCompBranchCloseddt" type="date">
+            <column name="MASTER_COMP_BRANCH_CLOSEDDT" length="10" />
+        </property>
+        <property name="masterCompBranchAdfldChr1" type="string">
+            <column name="MASTER_COMP_BRANCH_ADFLD_CHR1" length="50" />
+        </property>
+        <property name="masterCompBranchAdfldChr2" type="string">
+            <column name="MASTER_COMP_BRANCH_ADFLD_CHR2" length="50" />
+        </property>
+        <property name="masterCompBranchAdfldChr3" type="string">
+            <column name="MASTER_COMP_BRANCH_ADFLD_CHR3" length="50" />
+        </property>
+        <set name="userRoles" table="user_role" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="BRANCHID" not-null="true" />
+            </key>
+            <one-to-many class="UserRole" />
+        </set>
+    </class>
+</hibernate-mapping>

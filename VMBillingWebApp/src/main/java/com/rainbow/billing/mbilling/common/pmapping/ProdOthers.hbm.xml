@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 4, 2014 8:21:11 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="ProdOthers" table="prod_others" catalog="mob_store_billing">
+        <id name="prodOthersid" type="java.lang.Integer">
+            <column name="PROD_OTHERSID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="masterProdCategory" class="MasterProdCategory" fetch="select">
+            <column name="PROD_CATEGORY" not-null="true" />
+        </many-to-one>
+        <many-to-one name="masterMobBrand" class="MasterMobBrand" fetch="select">
+            <column name="PROD_BRAND" not-null="true" />
+        </many-to-one>
+        <property name="prodUnqid" type="string">
+            <column name="PROD_UNQID" length="50" not-null="true" />
+        </property>
+        <property name="prodName" type="string">
+            <column name="PROD_NAME" length="50" not-null="true" />
+        </property>
+        <property name="prodBuyprice" type="big_decimal">
+            <column name="PROD_BUYPRICE" precision="5" />
+        </property>
+        <property name="prodBuydt" type="timestamp">
+            <column name="PROD_BUYDT" length="19" />
+        </property>
+        <property name="prodSellprice" type="big_decimal">
+            <column name="PROD_SELLPRICE" precision="5" />
+        </property>
+        <property name="prodSelldt" type="timestamp">
+            <column name="PROD_SELLDT" length="19" />
+        </property>
+        <property name="prodReturnamount" type="big_decimal">
+            <column name="PROD_RETURNAMOUNT" precision="5" />
+        </property>
+        <property name="prodReturndt" type="timestamp">
+            <column name="PROD_RETURNDT" length="19" />
+        </property>
+    </class>
+</hibernate-mapping>

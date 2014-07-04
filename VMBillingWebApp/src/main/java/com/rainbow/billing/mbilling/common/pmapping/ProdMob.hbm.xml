@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 4, 2014 8:21:11 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="ProdMob" table="prod_mob" catalog="mob_store_billing">
+        <id name="prodMobId" type="java.lang.Integer">
+            <column name="PROD_MOB_ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="masterSupplier" class="MasterSupplier" fetch="select">
+            <column name="PROD_MOB_SUPPLIER" not-null="true" />
+        </many-to-one>
+        <many-to-one name="masterMobBrand" class="MasterMobBrand" fetch="select">
+            <column name="PROD_MOB_BRAND" not-null="true" />
+        </many-to-one>
+        <many-to-one name="masterProdStatus" class="MasterProdStatus" fetch="select">
+            <column name="PROD_MOB_STATUS" not-null="true" />
+        </many-to-one>
+        <property name="prodMobUnqid" type="string">
+            <column name="PROD_MOB_UNQID" length="50" not-null="true" unique="true" />
+        </property>
+        <property name="prodMobModelname" type="string">
+            <column name="PROD_MOB_MODELNAME" length="50" not-null="true" />
+        </property>
+        <property name="prodMobSupplierBillno" type="string">
+            <column name="PROD_MOB_SUPPLIER_BILLNO" length="45" />
+        </property>
+        <property name="prodMobSupplierBilldt" type="date">
+            <column name="PROD_MOB_SUPPLIER_BILLDT" length="10" />
+        </property>
+        <one-to-one name="prodMobAddinfo" class="ProdMobAddinfo"></one-to-one>
+        <set name="billpaymentCustomers" table="billpayment_customer" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CUSTOMER_PROD_ID" />
+            </key>
+            <one-to-many class="BillpaymentCustomer" />
+        </set>
+        <set name="prodTxActivities" table="prod_tx_activity" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PROD_TX_PRODID" not-null="true" />
+            </key>
+            <one-to-many class="ProdTxActivity" />
+        </set>
+    </class>
+</hibernate-mapping>

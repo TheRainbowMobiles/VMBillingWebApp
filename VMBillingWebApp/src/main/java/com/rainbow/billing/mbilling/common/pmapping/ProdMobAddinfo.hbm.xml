@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 4, 2014 8:21:11 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="ProdMobAddinfo" table="prod_mob_addinfo" catalog="mob_store_billing">
+        <id name="prodMobAddinfoId" type="int">
+            <column name="PROD_MOB_ADDINFO_ID" />
+            <generator class="foreign">
+                <param name="property">prodMob</param>
+            </generator>
+        </id>
+        <one-to-one name="prodMob" class="ProdMob" constrained="true"></one-to-one>
+        <property name="prodMobMrp" type="big_decimal">
+            <column name="PROD_MOB_MRP" precision="6" />
+        </property>
+        <property name="prodMobDp" type="big_decimal">
+            <column name="PROD_MOB_DP" precision="6" />
+        </property>
+        <property name="prodMobSchemeamt" type="big_decimal">
+            <column name="PROD_MOB_SCHEMEAMT" precision="6" />
+        </property>
+        <property name="prodMobBuyprice" type="big_decimal">
+            <column name="PROD_MOB_BUYPRICE" precision="6" />
+        </property>
+        <property name="prodMobSellprice" type="big_decimal">
+            <column name="PROD_MOB_SELLPRICE" precision="6" />
+        </property>
+        <property name="prodMobTaxamt" type="big_decimal">
+            <column name="PROD_MOB_TAXAMT" precision="6" />
+        </property>
+    </class>
+</hibernate-mapping>

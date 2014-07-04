@@ -17,5 +17,6 @@ public class MBillingConstants {
 	public static final String CURRECT_APP_FLOW_ACCOUNTS = "CURRENT_APP_FLOW_ACCOUNTS";
 	public static final String CURRECT_APP_FLOW_REPORTS = "CURRENT_APP_FLOW_REPORTS";
 	public static final String CURRECT_APP_FLOW_SETTINGS = "CURRENT_APP_FLOW_SETTINGS";
+	public static final String CURRECT_APP_FLOW_SIMMGMT = "CURRECT_APP_FLOW_SIMMGMT";
 	
 }

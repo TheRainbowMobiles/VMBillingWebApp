@@ -78,4 +78,13 @@ public class MBillingHeaderBean extends MBillingBaseBean {
 		storeValueToSessionMap(MBillingConstants.CURRECT_APP_FLOW, MBillingConstants.CURRECT_APP_FLOW_SETTINGS);
 		return "/pages/settings/settingshome.jsf";
 	}
+	
+	/**
+	 * Method to navigate the current work flow SIM Management.
+	 * @return
+	 */
+	public String goToSIMMgmtHome(){
+		storeValueToSessionMap(MBillingConstants.CURRECT_APP_FLOW, MBillingConstants.CURRECT_APP_FLOW_SIMMGMT);
+		return "/pages/simmgmt/simmgmthome.jsf";
+	}
 }

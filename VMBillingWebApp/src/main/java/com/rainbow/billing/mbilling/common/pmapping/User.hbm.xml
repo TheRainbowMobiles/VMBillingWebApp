@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 4, 2014 8:21:11 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="User" table="user" catalog="mob_store_billing">
+        <id name="userId" type="java.lang.Integer">
+            <column name="USER_ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="masterGenStatus" class="MasterGenStatus" fetch="select">
+            <column name="USER_STATUS" not-null="true" />
+        </many-to-one>
+        <many-to-one name="masterUsrSecqns" class="MasterUsrSecqns" fetch="select">
+            <column name="USER_SECQN_ID" not-null="true" />
+        </many-to-one>
+        <many-to-one name="masterUserCtgry" class="MasterUserCtgry" fetch="select">
+            <column name="USER_CATEGORY" not-null="true" />
+        </many-to-one>
+        <property name="userHexid" type="string">
+            <column name="USER_HEXID" length="70" not-null="true" />
+        </property>
+        <property name="userName" type="string">
+            <column name="USER_NAME" length="10" not-null="true" unique="true" />
+        </property>
+        <property name="userPassword" type="string">
+            <column name="USER_PASSWORD" length="50" not-null="true" />
+        </property>
+        <property name="userCompanyid" type="int">
+            <column name="USER_COMPANYID" not-null="true" />
+        </property>
+        <property name="userCompBranchid" type="int">
+            <column name="USER_COMP_BRANCHID" not-null="true" />
+        </property>
+        <property name="userCompbrnchRole" type="int">
+            <column name="USER_COMPBRNCH_ROLE" not-null="true" />
+        </property>
+        <property name="userEmpid" type="string">
+            <column name="USER_EMPID" length="45" not-null="true" />
+        </property>
+        <property name="userMobno" type="string">
+            <column name="USER_MOBNO" length="15" not-null="true" />
+        </property>
+        <property name="userEmail" type="string">
+            <column name="USER_EMAIL" length="50" not-null="true" />
+        </property>
+        <property name="userRgdDt" type="timestamp">
+            <column name="USER_RGD_DT" length="19" />
+        </property>
+        <property name="userLastloginDt" type="timestamp">
+            <column name="USER_LASTLOGIN_DT" length="19" />
+        </property>
+        <property name="userLoginFailurecount" type="int">
+            <column name="USER_LOGIN_FAILURECOUNT" not-null="true" />
+        </property>
+        <property name="userSecqnQnswer" type="string">
+            <column name="USER_SECQN_QNSWER" length="50" not-null="true" />
+        </property>
+        <property name="userAddfldChr1" type="string">
+            <column name="USER_ADDFLD_CHR1" length="50" />
+        </property>
+        <property name="userAddfldChr2" type="string">
+            <column name="USER_ADDFLD_CHR2" length="50" />
+        </property>
+        <property name="userFullname" type="string">
+            <column name="USER_FULLNAME" length="50" not-null="true" />
+        </property>
+        <set name="userRoles" table="user_role" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="USERID" not-null="true" />
+            </key>
+            <one-to-many class="UserRole" />
+        </set>
+        <set name="prodTxActivities" table="prod_tx_activity" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PROD_TX_ACTIONEDBY" not-null="true" />
+            </key>
+            <one-to-many class="ProdTxActivity" />
+        </set>
+    </class>
+</hibernate-mapping>

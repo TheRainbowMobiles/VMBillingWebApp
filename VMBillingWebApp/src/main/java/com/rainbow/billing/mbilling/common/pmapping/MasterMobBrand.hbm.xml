@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 4, 2014 8:21:11 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="MasterMobBrand" table="master_mob_brand" catalog="mob_store_billing">
+        <id name="masterMobBrandId" type="java.lang.Integer">
+            <column name="MASTER_MOB_BRAND_ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="masterGenStatus" class="MasterGenStatus" fetch="select">
+            <column name="MASTER_MOB_BRAND_STATUS" not-null="true" />
+        </many-to-one>
+        <property name="masterMobBrandDesc" type="string">
+            <column name="MASTER_MOB_BRAND_DESC" length="45" not-null="true" />
+        </property>
+        <set name="prodOtherses" table="prod_others" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PROD_BRAND" not-null="true" />
+            </key>
+            <one-to-many class="ProdOthers" />
+        </set>
+        <set name="prodMobs" table="prod_mob" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PROD_MOB_BRAND" not-null="true" />
+            </key>
+            <one-to-many class="ProdMob" />
+        </set>
+        <set name="masterSuppliers" table="master_supplier" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="MASTER_SUPPLIER_BRAND" not-null="true" />
+            </key>
+            <one-to-many class="MasterSupplier" />
+        </set>
+    </class>
+</hibernate-mapping>
