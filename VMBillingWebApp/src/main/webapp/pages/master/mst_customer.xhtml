@@ -21,31 +21,45 @@
 									</td>
 									<td>
 										<p:inputText id="customerName"
-											value="#{masterCustomerBean.custName}" required="true">
+											value="#{masterCustomerBean.customerVO.custName}" required="true">
 											<f:validateLength minimum="5" />
 										</p:inputText>
 									</td>
 									<td><h:outputLabel for="customerAddress" value="Address : " styleClass="b"/></td>
 									<td><p:inputTextarea id="customerAddress" size="50"
-											value="#{masterCustomerBean.custAddress}" required="true">
+											value="#{masterCustomerBean.customerVO.custAddress}" required="true">
 										</p:inputTextarea> 
 									</td>
 								</tr>
 								<tr>
 									<td><h:outputLabel for="customerMobileNo" value="MobileNo : " styleClass="b"/></td>
 									<td><p:inputText id="customerMobileNo"
-											value="#{masterCustomerBean.custMobileNo}" required="true">
+											value="#{masterCustomerBean.customerVO.custMobileNo}" required="true">
 											<p:ajax event="blur" update="customerMobileNoMsg" />
 										</p:inputText> <p:message id="customerMobileNoMsg" for="customerMobileNo"
 											display="icon" /></td>
 									<td><h:outputLabel for="customerEmail" value="custEmail : " styleClass="b"/></td>
 									<td><p:inputText id="customerEmail"
-											value="#{masterCustomerBean.custEmail}">
+											value="#{masterCustomerBean.customerVO.custEmail}">
 											<p:ajax event="blur" update="custEmailMsg" />
 										</p:inputText> <p:message id="custEmailMsg" for="customerMobileNo"
 											display="icon" /></td>
 								</tr>
-									</table>
+								<tr>
+									<td><h:outputLabel for="customerSegmentType" value="Customer Segment : " styleClass="b"/></td>
+									<td><p:inputText id="customerSegmentType"
+											value="#{masterCustomerBean.customerVO.customerSegType}" required="true">
+											<p:ajax event="blur" update="customerSegmentTypeMsg" />
+										</p:inputText> <p:message id="customerSegmentTypeMsg" for="customerSegmentType"
+											display="icon" /></td>
+								</tr>
+								<tr>
+									<td><p:commandButton id="addCustomer" value="Add Customer"
+											action="#{masterCustomerBean.addCustomer}" ajax="false" /></td>
+									<td><p:commandButton id="resetCustomer" value="Reset"
+											action="#{masterSupplierBean.resetCustomer}" ajax="false" /></td>
+								</tr>
+							</table>
 						</p:panel>
 					</td>
 					<td align="top">
@@ -54,13 +68,23 @@
 								<tr>
 									<td><h:outputLabel for="customerMobNoSrch" value="Customer Mob No : " /></td>
 									<td><p:inputText id="customerMobNoSrch"
-											value="#{masterCustomerBean.custMobileNo}" required="true">
+											value="#{masterCustomerBean.customerVO.custMobileNo}" required="true">
 											<f:validateLength minimum="5" />
 											<p:ajax event="blur" update="customerMobNoSrch" />
 										</p:inputText> <p:message id="customerMobNoMsbSrch" for="customerMobNoSrch"
 											display="icon" /></td>
 									<td><p:commandButton id="searchcustomerBtn" value="Search"
 											actionListener="#{masterCustomerBean.searchcustomer}" ajax="true" /></td>
+									<td>
+										<h:commandLink title="Export PDF" id="custSrchExportPDFBtn" action="#{masterCustomerBean.searchcustomerExportPDF}">
+											<img src="../../static/img/icon_pdf.jpg"/>
+										</h:commandLink>
+									</td>
+									<td>
+										<h:commandLink title="Export Excel" id="custSrchExportXLSBtn" action="#{masterCustomerBean.searchcustomerExportXLS}">
+											<img src="../../static/img/icon_excel.jpg"/>
+										</h:commandLink>
+									</td>
 								</tr>
 							</table>
 						</p:panel>
@@ -78,36 +102,37 @@
 						<f:facet name="header">
 							<h:outputText value="customerName" />
 						</f:facet>
-						<h:outputText value="#{customer.customerName}" />
+						<h:outputText value="#{customer.custName}" />
 					</p:column>
 
 					<p:column>
 						<f:facet name="header">
 							<h:outputText value="address" />
 						</f:facet>
-						<h:outputText value="#{customer.address}" />
-					</p:column>
-
-					<p:column>
-						<f:facet name="header">
-							<h:outputText value="Tax" />
-						</f:facet>
-						<h:outputText value="#{customer.tax}" />
+						<h:outputText value="#{customer.custAddress}" />
 					</p:column>
 
 					<p:column>
 						<f:facet name="header">
 							<h:outputText value="MobileNo" />
 						</f:facet>
-						<h:outputText value="#{customer.mobileNo}" />
+						<h:outputText value="#{customer.custMobileNo}" />
 					</p:column>
 					
 					<p:column>
 						<f:facet name="header">
 							<h:outputText value="Email" />
 						</f:facet>
-						<h:outputText value="#{customer.email}" />
+						<h:outputText value="#{customer.custEmail}" />
 					</p:column>
+					
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Segment" />
+						</f:facet>
+						<h:outputText value="#{customer.customerSegDesc}" />
+					</p:column>
+					
 				</p:dataTable>
 			</p:panel>
 		</h:form>

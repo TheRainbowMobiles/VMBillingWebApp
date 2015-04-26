@@ -3,10 +3,17 @@
  */
 package com.rainbow.billing.mbilling.web.mbean.master;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+
+import com.rainbow.billing.mbilling.common.reports.pdf.PDFReportGenerator;
+import com.rainbow.billing.mbilling.common.reports.xls.ExcelReportGenerator;
+import com.rainbow.billing.mbilling.common.util.ExcelReportConstants;
+import com.rainbow.billing.mbilling.common.util.PDFReportConstants;
+import com.rainbow.billing.mbilling.vo.CustomerVO;
 
 /**
  * @author Nanjundan
@@ -15,78 +22,72 @@ import javax.faces.bean.RequestScoped;
 @ManagedBean(name = "masterCustomerBean")
 @RequestScoped
 public class MasterCustomerManagedBean {
-	private String custName;
-	private String custAddress;
-	private String custMobileNo;
-	private String custEmail;
-	private String custType;
-	/**
-	 * @return the custName
-	 */
-	public String getCustName() {
-		return custName;
+	private CustomerVO customerVO;
+	//Below is for test only
+	private List<CustomerVO> customerList;
+	
+	public MasterCustomerManagedBean(){
+		customerVO = new CustomerVO();
+		customerList = new ArrayList<CustomerVO>(2);
+		
+		CustomerVO customerVO1 = new CustomerVO();
+		customerVO1.setCustName("AAA");
+		customerVO1.setCustAddress("Address1");
+		customerVO1.setCustMobileNo("1234567890");
+		customerVO1.setCustEmail("cust1.gamil.com");
+		customerVO1.setCustomerSegDesc("RETAIL");
+		
+		CustomerVO customerVO2 = new CustomerVO();
+		customerVO2.setCustName("BBBB");
+		customerVO2.setCustAddress("Address1");
+		customerVO2.setCustMobileNo("9876543210");
+		customerVO2.setCustEmail("cust2.gamil.com");
+		customerVO2.setCustomerSegDesc("RETAIL");
+		
+		customerList.add(customerVO1);
+		customerList.add(customerVO2);
 	}
+	
+	
+	
 	/**
-	 * @param custName the custName to set
+	 * @return the customerVO
 	 */
-	public void setCustName(String custName) {
-		this.custName = custName;
+	public CustomerVO getCustomerVO() {
+		return customerVO;
 	}
+
 	/**
-	 * @return the custAddress
+	 * @param customerVO the customerVO to set
 	 */
-	public String getCustAddress() {
-		return custAddress;
-	}
-	/**
-	 * @param custAddress the custAddress to set
-	 */
-	public void setCustAddress(String custAddress) {
-		this.custAddress = custAddress;
-	}
-	/**
-	 * @return the custMobileNo
-	 */
-	public String getCustMobileNo() {
-		return custMobileNo;
-	}
-	/**
-	 * @param custMobileNo the custMobileNo to set
-	 */
-	public void setCustMobileNo(String custMobileNo) {
-		this.custMobileNo = custMobileNo;
-	}
-	/**
-	 * @return the custEmail
-	 */
-	public String getCustEmail() {
-		return custEmail;
-	}
-	/**
-	 * @param custEmail the custEmail to set
-	 */
-	public void setCustEmail(String custEmail) {
-		this.custEmail = custEmail;
-	}
-	/**
-	 * @return the custType
-	 */
-	public String getCustType() {
-		return custType;
-	}
-	/**
-	 * @param custType the custType to set
-	 */
-	public void setCustType(String custType) {
-		this.custType = custType;
+	public void setCustomerVO(CustomerVO customerVO) {
+		this.customerVO = customerVO;
 	}
 	
 	/**
-	 * Method to return the list of customers
+	 * Method to get the Customers List..
 	 * 
 	 * @return
 	 */
-	public List getCustomers(){
+	public List<CustomerVO> getCustomers(){
+		return customerList;
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public String searchcustomerExportPDF(){
+		PDFReportGenerator.generatePDF(PDFReportConstants.CUSTOMER_SEARCH_RESULTS_REPORT_PDF_KEY, customerList);
+		return null;
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String searchcustomerExportXLS(){
+		ExcelReportGenerator.generateExcel(ExcelReportConstants.CUSTOMER_SEARCH_RESULTS_REPORT_XLS_KEY, customerList);
 		return null;
 	}
 
